@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Продаж ЖД квитків</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="sidebar">
+                <h2>Інформаційна система</h2>
+                <button onclick="showTab('createTab')">Створити рейс</button>
+                <button onclick="showTab('listTab')">Список рейсів</button>
+                <button onclick="showTab('passengerListTab')">Список пасажирів</button>
+                <button onclick="showTab('registerTab')">Реєстрація пасажира</button>
+                <button onclick="showTab('trainsTab')">Список поїздів та пасажирів</button>
+            </div>
+
+            <div class="content">
+                <h1>Продаж ЖД квитків</h1>
+
+                <!-- Форма створення рейсу -->
+                <div id="createTab" class="tab">
+                    <div>
+                        <label for="trainName">Назва поїзда:</label>
+                        <input type="text" id="trainName">
+                    </div>
+                    <div>
+                        <label for="capacity">Кількість місць:</label>
+                        <input type="number" id="capacity">
+                    </div>
+                    <div>
+                        <label for="departureDateTime">Дата і час відправлення:</label>
+                        <input type="datetime-local" id="departureDateTime">
+                    </div>
+                    <div>
+                        <label for="arrivalDateTime">Дата і час прибуття:</label>
+                        <input type="datetime-local" id="arrivalDateTime">
+                    </div>
+                    <div>
+                        <label for="ticketPrice">Ціна за квиток:</label>
+                        <input type="number" id="ticketPrice">
+                    </div>
+                    <button onclick="createTrain()">Створити рейс</button>
+                </div>
+
+                <!-- Таблиця рейсів -->
+                <div id="listTab" class="tab" style="display:none;">
+                    <div id="trainList"></div>
+                </div>
+
+                <!-- Форма запису пасажира на поїзд -->
+                <div id="bookingForm" class="tab" style="display:none;">
+                    <h2>Запис пасажира на поїзд</h2>
+                    <div>
+                        <label for="passengerSelect">Оберіть пасажира:</label>
+                        <select id="passengerSelect"></select>
+                    </div>
+                    <button onclick="bookTicket()">Записати на поїзд</button>
+                </div>
+
+                <!-- Форма реєстрації пасажира -->
+                <div id="registerTab" class="tab" style="display:none;">
+                    <h2>Реєстрація нового пасажира</h2>
+                    <div>
+                        <label for="passengerNameReg">Ім'я пасажира:</label>
+                        <input type="text" id="passengerNameReg">
+                    </div>
+                    <div>
+                        <label for="phoneReg">Номер телефону:</label>
+                        <input type="text" id="phoneReg">
+                    </div>
+                    <div>
+                        <label for="emailReg">Електронна пошта:</label>
+                        <input type="email" id="emailReg">
+                    </div>
+                    <div>
+                        <label for="discountReg">Номер пільги (FF або SF):</label>
+                        <input type="text" id="discountReg">
+                    </div>
+                    <button onclick="registerPassenger()">Зареєструвати</button>
+                </div>
+
+
+                <div id="passengerListTab" class="tab" style="display:none;">
+                    <h2>Список зареєстрованих пасажирів</h2>
+                    <div id="passengerListContainer">
+                        <!-- Сюди буде вставлена таблиця з пасажирами -->
+                    </div>
+                </div>
+
+                <!-- Вкладка з поїздами та пасажирами -->
+                <div id="trainsTab" class="tab">
+                    <h2>Список поїздів та пасажирів</h2>
+                    <div class="trains-container" id="trainsContainer">
+                        <!-- Місце для відображення списку поїздів -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
